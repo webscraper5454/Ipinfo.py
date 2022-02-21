@@ -11,7 +11,7 @@ with open("sample.txt","r") as read_ioc:
 
     for j in file:
 
-        search=requests.get("https://ipinfo.io/"+j+"?token=936ebbcd3be427")
+        search=requests.get("https://ipinfo.io/"+j+"?token=")
         print(search.json())
         data = search.json()
        
