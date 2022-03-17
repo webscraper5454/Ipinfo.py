@@ -1,1 +1,27 @@
 
+import socket
+import requests
+import json
+write_content=open('ip_info.json','w')
+file= input("enter the file name\n")
+file = open(file, 'r')
+
+domain=[]
+
+for x in file.readlines():
+    domain.append(x.rstrip())
+
+for y in domain:
+    print(y,  "             ==:",socket.gethostbyname(y))
+
+    ip_of_domains = socket.gethostbyname(y)
+    json_content = requests.get('https://freeapi.dnslytics.net/v1/ip2asn/'+ip_of_domains)
+    print(json_content.json())
+    ip_data =json_content.json()
+    data = json.dump(ip_data, write_content)
+    write_content.write('\n')
+    
+       
+
+
+
